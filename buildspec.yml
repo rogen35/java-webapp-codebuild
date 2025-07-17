@@ -4,20 +4,17 @@ phases:
   install:
     runtime-versions:
       java: corretto11
+    commands:
+      - echo "Getting CodeArtifact auth token..."
+      - export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain nextwork --domain-owner 811259913624 --region ap-southeast-1 --query authorizationToken --output text)
+      - echo "Token received."
   pre_build:
     commands:
-      - echo Getting CodeArtifact auth token
-      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token \
-          --domain nextwork \
-          --domain-owner 811259913624 \
-          --region ap-southeast-1 \
-          --query authorizationToken \
-          --output text`
+      - echo "Setting up Maven auth..."
   build:
     commands:
-      - echo Build started on `date`
-      - mvn -s settings.xml clean package
-
+      - echo "Running Maven build..."
+      - mvn clean install --settings settings.xml
 artifacts:
   files:
     - target/*.war

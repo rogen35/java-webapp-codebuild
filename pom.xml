@@ -10,14 +10,13 @@
   <name>rogen-web-project Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
-  <repositories>
-    <repository>
-      <id>nextwork-rogen-devops-cicd</id>
-      <url>https://nextwork-811259913624.d.codeartifact.ap-southeast-1.amazonaws.com/maven/rogen-devops-cicd/</url>
-      <releases><enabled>true</enabled></releases>
-      <snapshots><enabled>true</enabled></snapshots>
-    </repository>
-  </repositories>
+<repositories>
+  <repository>
+    <id>nextwork-rogen-devops-cicd</id>
+    <url>https://nextwork-811259913624.d.codeartifact.ap-southeast-1.amazonaws.com/maven/rogen-devops-cicd/</url>
+  </repository>
+</repositories>
+
 
   <pluginRepositories>
     <pluginRepository>
