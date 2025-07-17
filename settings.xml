@@ -1,0 +1,39 @@
+<settings>
+
+<servers>
+  <server>
+    <id>nextwork-rogen-devops-cicd</id>
+    <username>aws</username>
+    <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
+  </server>
+</servers>
+
+<profiles>
+  <profile>
+    <id>nextwork-rogen-devops-cicd</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <repositories>
+      <repository>
+        <id>nextwork-rogen-devops-cicd</id>
+        <url>https://nextwork-811259913624.d.codeartifact.ap-southeast-1.amazonaws.com/maven/rogen-devops-cicd/</url>
+      </repository>
+    </repositories>
+  </profile>
+</profiles>
+
+<mirrors>
+  <mirror>
+    <id>nextwork-rogen-devops-cicd</id>
+    <name>nextwork-rogen-devops-cicd</name>
+    <url>https://nextwork-811259913624.d.codeartifact.ap-southeast-1.amazonaws.com/maven/rogen-devops-cicd/</url>
+    <mirrorOf>*</mirrorOf>
+  </mirror>
+</mirrors>
+
+
+
+
+
+</settings>
