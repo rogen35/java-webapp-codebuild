@@ -3,23 +3,21 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto8
-  phases:
+      java: corretto11
   pre_build:
     commands:
-      - echo Logging in to CodeArtifact
-      - export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain nextwork --domain-owner 811259913624 --region ap-southeast-1 --query authorizationToken --output text)
-
-
+      - echo Getting CodeArtifact auth token
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token \
+          --domain nextwork \
+          --domain-owner 811259913624 \
+          --region ap-southeast-1 \
+          --query authorizationToken \
+          --output text`
   build:
     commands:
       - echo Build started on `date`
-      - mvn -s settings.xml compile
-  post_build:
-    commands:
-      - echo Build completed on `date`
-      - mvn -s settings.xml package
+      - mvn -s settings.xml clean package
+
 artifacts:
   files:
-    - target/rogen-web-project.war
-  discard-paths: no
+    - target/*.war
